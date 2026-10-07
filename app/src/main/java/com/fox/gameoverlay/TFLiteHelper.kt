@@ -5,8 +5,6 @@ import android.graphics.Bitmap
 import android.graphics.RectF
 import android.util.Log
 import org.tensorflow.lite.Interpreter
-import org.tensorflow.lite.gpu.CompatibilityList
-import org.tensorflow.lite.gpu.GpuDelegate
 import org.tensorflow.lite.support.common.FileUtil
 import java.nio.ByteBuffer
 import java.nio.ByteOrder
@@ -41,7 +39,6 @@ class TFLiteHelper(context: Context) : AutoCloseable {
     }
 
     private var interpreter: Interpreter? = null
-    private var gpuDelegate: GpuDelegate? = null
 
     private val inputBuffer: ByteBuffer = ByteBuffer
         .allocateDirect(1 * INPUT_SIZE * INPUT_SIZE * 3 * 4)
@@ -64,11 +61,6 @@ class TFLiteHelper(context: Context) : AutoCloseable {
             val model = FileUtil.loadMappedFile(context, "ssd_mobilenet.tflite")
             val options = Interpreter.Options().apply {
                 setNumThreads(4)
-                val compat = CompatibilityList()
-                if (compat.isDelegateSupportedOnThisDevice) {
-                    gpuDelegate = GpuDelegate(compat.bestOptionsForThisDevice)
-                    addDelegate(gpuDelegate)
-                }
             }
             interpreter = Interpreter(model, options)
         } catch (t: Throwable) {
@@ -118,8 +110,6 @@ class TFLiteHelper(context: Context) : AutoCloseable {
 
     override fun close() {
         try { interpreter?.close() } catch (_: Throwable) {}
-        try { gpuDelegate?.close() } catch (_: Throwable) {}
         interpreter = null
-        gpuDelegate = null
     }
 }
