@@ -1,0 +1,42 @@
+# Gradle files
+.gradle/
+build/
+gradle-app.setting
+!gradle-wrapper.jar
+
+# Local configuration file
+local.properties
+
+# IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# DS_Store
+.DS_Store
+
+# Build
+*.apk
+*.aab
+*.rar
+
+# Kotlin
+.kotlin/
+
+# Native
+.externalNativeBuild
+.cxx/
+
+# Android
+captures/
+.cxx
+
+# Log files
+*.log
+
+# Other
+.vscode/
+*.swp
+*.swo
+*~
