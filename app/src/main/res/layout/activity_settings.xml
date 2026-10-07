@@ -1,191 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Settings"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="16dp" />
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <LinearLayout
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/fpsLabel" android:text="FPS: 30"/>
+        <SeekBar android:id="@+id/fpsBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/alphaLabel" android:text="Прозрачность: 1.0"/>
+        <SeekBar android:id="@+id/alphaBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/thickLabel" android:text="Толщина: 3"/>
+        <SeekBar android:id="@+id/thickBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <EditText android:id="@+id/colorHex"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:hint="#RRGGBB" android:inputType="text"/>
 
-            <!-- FPS Settings -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Display"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp" />
+        <EditText android:id="@+id/fovEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="FOV (px)" android:inputType="number"/>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="16dp">
+        <EditText android:id="@+id/speedEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Скорость наведения (ms)" android:inputType="number"/>
 
-                <TextView
-                    android:id="@+id/fpsLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="FPS: 30"
-                    android:textSize="14sp" />
+        <CheckBox android:id="@+id/aimCheck"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Включить авто-наведение"/>
 
-                <SeekBar
-                    android:id="@+id/fpsBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
-
-            </LinearLayout>
-
-            <!-- Alpha Settings -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="16dp">
-
-                <TextView
-                    android:id="@+id/alphaLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Transparency: 1.0"
-                    android:textSize="14sp" />
-
-                <SeekBar
-                    android:id="@+id/alphaBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
-
-            </LinearLayout>
-
-            <!-- Thickness Settings -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginBottom="16dp">
-
-                <TextView
-                    android:id="@+id/thickLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Thickness: 3"
-                    android:textSize="14sp" />
-
-                <SeekBar
-                    android:id="@+id/thickBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp" />
-
-            </LinearLayout>
-
-            <!-- Color Settings -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Color (Hex)"
-                android:textSize="14sp"
-                android:layout_marginBottom="4dp" />
-
-            <EditText
-                android:id="@+id/colorHex"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="#FF0000"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Aim Settings -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Aim Assist"
-                android:textStyle="bold"
-                android:textSize="16sp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginBottom="16dp">
-
-                <CheckBox
-                    android:id="@+id/aimCheck"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Enable Aim Assist"
-                    android:textSize="14sp"
-                    android:layout_marginStart="8dp"
-                    android:gravity="center_vertical" />
-
-            </LinearLayout>
-
-            <!-- FOV Settings -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="FOV"
-                android:textSize="14sp"
-                android:layout_marginBottom="4dp" />
-
-            <EditText
-                android:id="@+id/fovEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="300"
-                android:inputType="number"
-                android:layout_marginBottom="16dp" />
-
-            <!-- Speed Settings -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Aim Duration (ms)"
-                android:textSize="14sp"
-                android:layout_marginBottom="4dp" />
-
-            <EditText
-                android:id="@+id/speedEdit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="40"
-                android:inputType="number"
-                android:layout_marginBottom="16dp" />
-
-        </LinearLayout>
-
-    </ScrollView>
-
-    <!-- Save Button -->
-    <Button
-        android:id="@+id/btnSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Save Settings"
-        android:layout_marginTop="16dp" />
-
-</LinearLayout>
+        <Button android:id="@+id/btnSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Сохранить"/>
+    </LinearLayout>
+</ScrollView>
