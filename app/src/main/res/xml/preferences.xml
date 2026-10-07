@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <SwitchPreference
+        android:key="aim_assist_enabled"
+        android:title="Aim Assist"
+        android:summary="Enable AI-powered aim assistance"
+        android:defaultValue="false" />
+
+    <EditTextPreference
+        android:key="aimCooldown"
+        android:title="@string/aim_cooldown"
+        android:summary="Cooldown between aim gestures"
+        android:defaultValue="80"
+        android:inputType="number" />
+
+    <EditTextPreference
+        android:key="aimDuration"
+        android:title="@string/aim_duration"
+        android:summary="Duration of each aim gesture"
+        android:defaultValue="40"
+        android:inputType="number" />
+
+    <SwitchPreference
+        android:key="detection_enabled"
+        android:title="@string/detection_enabled"
+        android:summary="Enable object detection"
+        android:defaultValue="true" />
+
+    <SeekBarPreference
+        android:key="detection_threshold"
+        android:title="@string/detection_threshold"
+        android:summary="Minimum detection confidence"
+        android:defaultValue="45"
+        android:min="10"
+        android:max="95" />
+
+</PreferenceScreen>
