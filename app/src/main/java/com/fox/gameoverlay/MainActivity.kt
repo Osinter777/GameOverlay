@@ -78,11 +78,23 @@ class MainActivity : AppCompatActivity() {
             }
             startService(stopCapture)
             stopService(Intent(this, OverlayService::class.java))
+            stopService(Intent(this, FloatingMenuService::class.java))
             Toast.makeText(this, "Остановлено", Toast.LENGTH_SHORT).show()
         }
 
         findViewById<Button>(R.id.btnAccessibility).setOnClickListener {
             startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
+        }
+
+        findViewById<Button>(R.id.btnFloatingMenu).setOnClickListener {
+            if (!Settings.canDrawOverlays(this)) {
+                startActivity(
+                    Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION, Uri.parse("package:$packageName"))
+                )
+            } else {
+                val i = Intent(this, FloatingMenuService::class.java)
+                ContextCompat.startForegroundService(this, i)
+            }
         }
     }
 
