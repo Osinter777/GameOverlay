@@ -14,16 +14,25 @@ class AimAccessibilityService : AccessibilityService() {
 
         @Volatile private var lastAimTime = 0L
 
-        fun aimAt(x: Float, y: Float) {
+        fun swipeTo(x: Float, y: Float) {
             val svc = instance ?: return
             val now = System.currentTimeMillis()
             val prefs = svc.getSharedPreferences("settings", Context.MODE_PRIVATE)
-            val cooldown = prefs.getLong("aimCooldown", 80L)
+            val cooldown = prefs.getLong("aimCooldown", 150L)
             if (now - lastAimTime < cooldown) return
             lastAimTime = now
-            val dur = prefs.getLong("aimDuration", 40L).coerceIn(1L, 500L)
+            val dur = prefs.getLong("aimDuration", 120L).coerceIn(30L, 500L)
+
             try {
-                val path = Path().apply { moveTo(x, y) }
+                val screenW = svc.resources.displayMetrics.widthPixels.toFloat()
+                val screenH = svc.resources.displayMetrics.heightPixels.toFloat()
+                val startX = screenW / 2f
+                val startY = screenH / 2f
+
+                val path = Path().apply {
+                    moveTo(startX, startY)
+                    lineTo(x, y)
+                }
                 val gesture = GestureDescription.Builder()
                     .addStroke(GestureDescription.StrokeDescription(path, 0L, dur))
                     .build()
