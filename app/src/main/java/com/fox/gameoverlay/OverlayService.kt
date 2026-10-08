@@ -37,7 +37,7 @@ class OverlayService : Service() {
                     val dy = cy - v.height / 2f
                     val dist = kotlin.math.sqrt(dx * dx + dy * dy)
                     if (dist <= fov) {
-                        AimAccessibilityService.aimAt(cx, cy)
+                        AimAccessibilityService.swipeTo(cx, cy)
                     }
                 }
             }
