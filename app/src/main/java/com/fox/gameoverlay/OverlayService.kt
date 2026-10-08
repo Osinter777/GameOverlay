@@ -25,8 +25,12 @@ class OverlayService : Service() {
             val svc = instance ?: return
             svc.view?.post {
                 val v = svc.view ?: return@post
-                v.setDetections(list, screenW, screenH)
                 val prefs = svc.getSharedPreferences("settings", Context.MODE_PRIVATE)
+                if (!prefs.getBoolean("espEnabled", false)) {
+                    v.setDetections(emptyList(), screenW, screenH)
+                    return@post
+                }
+                v.setDetections(list, screenW, screenH)
                 if (prefs.getBoolean("aimEnabled", false) && AimAccessibilityService.instance != null) {
                     val fov = prefs.getInt("fov", 300).toFloat()
                     val detection = v.closestDetection() ?: return@post
