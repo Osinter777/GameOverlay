@@ -29,4 +29,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Включить Accessibility" />
+
+    <Button
+        android:id="@+id/btnFloatingMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Плавающее меню" />
 </LinearLayout>
